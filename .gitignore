@@ -164,3 +164,7 @@ cython_debug/
 stock-price-prediction/datas/adjusted/
 
 stock-price-prediction/datas/splited/
+
+coin_coding_test/checkpoint/
+
+coin_coding_test/.idea/
