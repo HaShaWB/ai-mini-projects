@@ -1,26 +1,27 @@
 train:
-  batch_size: 65536
-  gpus: 0 #0:cpu, 1:gpu
+  batch_size: 32
+  gpus: 1 #0:cpu, 1:gpu
   lr: 0.0002
   weight_decay: 0.00
   opt_eps: 1e-9
   beta1: 0.9
   beta2: 0.999
+  num_workers: 16
 
 data:
   image: "./figure/figure2e_nuwave.png" #[500, 400, 4(rgba)]]
   images:
     [
-      'figure\figure2a_orig.png',
-      'figure\figure2b_linear.png',
-      'figure\figure2c_u.png',
-      'figure\figure2d_mu.png',
-      'figure\figure2e_nuwave.png',
+      'figure/figure2a_orig.png',
+      'figure/figure2b_linear.png',
+      'figure/figure2c_u.png',
+      'figure/figure2d_mu.png',
+      'figure/figure2e_nuwave.png',
     ]
 
 arch:
   layers: 8
-  channels: 64
+  channels: 256
   init_scale: 30.
 
 log:

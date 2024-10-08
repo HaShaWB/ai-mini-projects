@@ -33,7 +33,7 @@ def train(args):
         checkpoint_callback=checkpoint_callback,
         gpus=hparams.train.gpus,
         check_val_every_n_epoch=100,
-        max_epochs=1000,
+        max_epochs=100000,
         logger=tblogger,
         progress_bar_refresh_rate=4,
         resume_from_checkpoint=None if args.resume_from is None \

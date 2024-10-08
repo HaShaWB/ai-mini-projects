@@ -9,29 +9,31 @@ from torch.utils.data import Dataset, DataLoader
 def create_coin_dataloader(hparams, cv):
     def collate_fn(batch):
         x_list = list()
-        rgb_list = list()
-        for x, rgb in batch:
+        rgbs_list = list()
+        for x, rgbs in batch:
             x_list.append(x)
-            rgb_list.append(rgb)
+            rgbs_list.append(rgbs)
         x_list = torch.stack(x_list, dim=0)
-        rgb_list = torch.stack(rgb_list, dim=0)
+        rgbs_list = torch.stack(rgbs_list, dim=0)
 
-        return x_list, rgb_list
+        return x_list, rgbs_list
 
     DS = ImageDataset(hparams, cv)
     if cv == 0:
         return DataLoader(dataset=DS,
-                          batch_size=1,  # hparams.train.batch_size,
+                          batch_size=hparams.train.batch_size,
                           shuffle=True,
-                          # collate_fn=collate_fn,
+                          collate_fn=collate_fn,
                           pin_memory=True,
-                          drop_last=True,
-                          sampler=None)
+                          drop_last=False,
+                          sampler=None,
+                          num_workers=hparams.train.num_workers)
     else:
         return DataLoader(dataset=DS,
                           batch_size=1,
                           drop_last=False,
                           shuffle=False,
+                          num_workers=16,
                           )
 
 
