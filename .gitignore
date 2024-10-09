@@ -168,3 +168,5 @@ stock-price-prediction/datas/splited/
 coin_coding_test/checkpoint/
 
 coin_coding_test/.idea/
+
+*.ckpt
